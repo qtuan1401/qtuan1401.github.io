@@ -24,7 +24,7 @@ function printDate(date, day = '') {
   return `${yyyy}-${mm}-${dd}${day}`;
 }
 
-function printTime(date, time = '19:30:00', timeZone = -7) {
+function printTime(date, time, timeZone = -7) {
   let hh = time.slice(0, 2);
   let mm = time.slice(3, 5);
   let ss = time.slice(6);
@@ -51,8 +51,8 @@ function createTime() {
 
   for (let i = 0; i < timetable.length; i++) {
     timetable[i].querySelector('.day').textContent = printDate(nextSaturday[i], 'Thứ bảy');
-    timetable[i].querySelector('.contestStartTime').textContent = printTime(nextSaturday[i]);
-    timetable[i].querySelector('.contestEndTime').textContent = printTime(nextSaturday[i]);
+    timetable[i].querySelector('.contestStartTime').textContent = printTime(nextSaturday[i], '19:30:00');
+    timetable[i].querySelector('.contestEndTime').textContent = printTime(nextSaturday[i], '22:30:00');
   }
 }
 
@@ -69,7 +69,7 @@ function createTable() {
   // create table rows
   for (let i = 0; i < nDays; i++) {
     s += `
-      <tr class=${'d ' + i}>
+      <tr class="d">
         <td class="day"></td>
         <td class="contestStartTime"></td>
         <td class="contestEndTime"></td>
